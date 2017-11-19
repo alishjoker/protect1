@@ -41,10 +41,10 @@ def sendMessage(to, text, contentMetadata={}, contentType=0):
 
 def NOTIFIED_ACCEPT_GROUP_INVITATION(op):
     try:
-        sendMessage(op.param1, client.getContact(op.param2).displayName + ",")
+        sendMessage(op.param1, client.getContact(op.param2).displayName + "")
     except Exception as e:
         print e
-        print ("")
+        print ("\n\nNOTIFIED_ACCEPT_GROUP_INVITATION\n\n")
         return
 
 tracer.addOpInterrupt(17,NOTIFIED_ACCEPT_GROUP_INVITATION)
@@ -53,7 +53,7 @@ def NOTIFIED_KICKOUT_FROM_GROUP(op):
     try:
 				client.kickoutFromGroup(op.param1,[op.param2])
 				client.inviteIntoGroup(op.param1,[op.param3])
-				sendMessage(op.param1, client.getContact(op.param2).displayName + ", کصخول محافظ فعاله نپاک کیر میشی! کانال ما @t.me/alihack011")				
+				sendMessage(op.param1, client.getContact(op.param2).displayName + ", Protect On!")				
     except Exception as e:
         print e
         print ("\n\nNOTIFIED_KICKOUT_FROM_GROUP\n\n")
@@ -63,7 +63,7 @@ tracer.addOpInterrupt(19,NOTIFIED_KICKOUT_FROM_GROUP)
 
 def NOTIFIED_UPDATE_GROUP(op):
     try:
-                sendMessage(op.param1, client.getContact(op.param2).displayName + ", کصخول محافظ فعاله نپاک کیر میشی! کانال ما @t.me/alihack011")
+                sendMessage(op.param1, client.getContact(op.param2).displayName + ", Protect On!")
                 client.kickoutFromGroup(op.param1,[op.param2])
     except Exception as e:
         print e
@@ -74,7 +74,7 @@ tracer.addOpInterrupt(11,NOTIFIED_UPDATE_GROUP)
 
 def NOTIFIED_CANCEL_INVITATION_GROUP(op):
     try:
-                sendMessage(op.param1, client.getContact(op.param2).displayName + ", کصخول محافظ فعاله نپاک کیر میشی! کانال ما @t.me/alihack011")
+                sendMessage(op.param1, client.getContact(op.param2).displayName + ", Protect On!")
                 client.kickoutFromGroup(op.param1,[op.param2])
                 client.inviteIntoGroup(op.param1,[op.param3])
     except Exception as e:
@@ -123,12 +123,12 @@ def SEND_MESSAGE(op):
         if msg.toType == 2:
             if msg.contentType == 0:
 #-------------------------------------------------------------
-		if msg.text == "سرعت":
+		if msg.text == "Speed":
                     start = time.time()
                     elapsed_time = time.time() - start
-                    sendMessage(msg.to, "%سرعت در ثانیه" % (elapsed_time))
-		    sendMessage(msg.to,"طراحی شده توسط علیش جوکر")	
-                    print ("\nCek سرعت ربات")
+                    sendMessage(msg.to, "%sseconds" % (elapsed_time))
+		    sendMessage(msg.to,"Bot Author By Alish Jok ")	
+                    print ("\nCek Speed Bot")
                     
                 if msg.text == "Tag all":
 		      group = client.getGroup(msg.to)
